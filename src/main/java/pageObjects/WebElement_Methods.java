@@ -123,6 +123,11 @@ public class WebElement_Methods {
         return isValid;
     }
 
+    public Boolean elementIsDisplayed(WebElement element) {
+        waitToBeVisible(element);
+        return element.isDisplayed();
+    }
+
 
 
 }
