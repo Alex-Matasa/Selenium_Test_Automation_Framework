@@ -6,12 +6,14 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import pageObjects.Base_PO;
+import pageObjects.Frames_Methods;
 import pageObjects.WebElement_Methods;
 
 public class Frames_PO {
 
     private WebDriver driver;
     private WebElement_Methods webElementMethods = new WebElement_Methods(Base_PO.getDriver());
+    private Frames_Methods framesMethods = new Frames_Methods(Base_PO.getDriver());
 
 
     public Frames_PO(WebDriver driver) {
@@ -48,7 +50,7 @@ public class Frames_PO {
     }
 
     public void switchToFrame1() {
-        driver.switchTo().frame(frame1Body_WebElement);
+        framesMethods.switchToFrame(frame1Body_WebElement);
     }
 
     public Boolean validateFrame1() {
@@ -56,7 +58,7 @@ public class Frames_PO {
     }
 
     public void switchToMainPage() {
-        driver.switchTo().defaultContent();
+        framesMethods.switchToMainPage();
     }
 
     public Boolean validateSwitchToMain() {
@@ -64,7 +66,7 @@ public class Frames_PO {
     }
 
     public void switchToFrame2() {
-        driver.switchTo().frame(frame2Body_WebElement);
+        framesMethods.switchToFrame(frame2Body_WebElement);
     }
 
     public Boolean validateFrame2() {
