@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="D:/IT/PROJECTS/Demo_QA_TestNG">
+        <classes>
+            <class name="tests.alerts_frame_windows.Alerts_Test">
+                <methods>
+                    <include name="validScenario"/>
+                </methods>
+            </class>
+            <class name="tests.alerts_frame_windows.BrowserWindows_Test">
+                <methods>
+                    <include name="validScenario"/>
+                </methods>
+            </class>
+            <class name="tests.alerts_frame_windows.Frames_Test">
+                <methods>
+                    <include name="validScenario"/>
+                </methods>
+            </class>
+            <class name="tests.alerts_frame_windows.NestedFrames_Test">
+                <methods>
+                    <include name="validScenario"/>
+                </methods>
+            </class>
+            <class name="tests.elements.Buttons_Test">
+                <methods>
+                    <include name="validScenario"/>
+                </methods>
+            </class>
+            <class name="tests.elements.RadioButton_Test">
+                <methods>
+                    <include name="validScenario"/>
+                </methods>
+            </class>
+            <class name="tests.elements.TextBox_Test">
+                <methods>
+                    <include name="enterValidData"/>
+                    <include name="enterInvalidEmail"/>
+                </methods>
+            </class>
+            <class name="tests.elements.WebTableTest">
+                <methods>
+                    <include name="addEntryValidScenario"/>
+                </methods>
+            </class>
+            <class name="tests.forms.PracticeForm_Test">
+                <methods>
+                    <include name="validScenario"/>
+                </methods>
+            </class>
+            <class name="tests.widgets.DatePicker_Test">
+                <methods>
+                    <include name="validScenario"/>
+                </methods>
+            </class>
+            <class name="tests.widgets.SelectMenu_Test">
+                <methods>
+                    <include name="validScenario"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

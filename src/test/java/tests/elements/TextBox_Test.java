@@ -47,7 +47,7 @@ public class TextBox_Test  {
     }
 
     @Test
-    public void validScenario() {
+    public void enterValidData() {
         driver.get("https://demoqa.com/");
         homePage.navigateToElements();
         elementsPage.navigateToTextBox();
@@ -58,6 +58,19 @@ public class TextBox_Test  {
         textBoxPage.enterPermanentAddress(permanentAddressValue);
         textBoxPage.clickOnSubmitButton();
         Assert.assertTrue(textBoxPage.validateTest(dataInput));
+    }
+    @Test
+    public void enterInvalidEmail() {
+        driver.get("https://demoqa.com/");
+        homePage.navigateToElements();
+        elementsPage.navigateToTextBox();
+
+        textBoxPage.enterFullName(fullNameValue);
+        textBoxPage.enterEmail("popescu.ion.email.com");
+        textBoxPage.enterCurrentAddress(currentAddressValue);
+        textBoxPage.enterPermanentAddress(permanentAddressValue);
+        textBoxPage.clickOnSubmitButton();
+        Assert.assertTrue(textBoxPage.validateEmailErrorField());
     }
 
 

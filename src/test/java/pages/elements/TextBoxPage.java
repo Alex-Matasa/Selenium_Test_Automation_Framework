@@ -25,6 +25,7 @@ public class TextBoxPage {
 
     @FindBy(xpath = "//input[@type='text']") private WebElement fullName_WebElement;
     @FindBy(xpath = "//input[@type='email']") private WebElement email_WebElement;
+    @FindBy(xpath = "//input[@type='email'] [contains(@class, 'field-error')]") private WebElement emailError_WebElement;
     @FindBy(xpath = "//label[text()='Current Address']/parent:: div/following-sibling::div/textarea") private WebElement currentAddress_WebElement;
     @FindBy(xpath = "//label[text()='Permanent Address']/parent:: div/following-sibling::div/textarea") private WebElement permanentAddress_WebElement;
     @FindBy(xpath = "//button[@id='submit']") private WebElement submit_WebElement;
@@ -53,6 +54,10 @@ public class TextBoxPage {
 
     public Boolean validateTest(ArrayList dataInput) {
          return assertionMethods.validateText(dataOutput_WebElement,dataInput);
+    }
+
+    public Boolean validateEmailErrorField() {
+        return webElementMethods.elementIsDisplayed(emailError_WebElement);
     }
 
 

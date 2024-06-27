@@ -1,6 +1,7 @@
 package tests.forms;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.json.JsonOutput;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -100,8 +101,13 @@ public class PracticeForm_Test {
             else hobbies += hobbiesListValue.get(index) + ", ";
         }
 
+
         return hobbies;
+
     }
+
+
+
 
 
 }
