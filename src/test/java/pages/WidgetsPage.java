@@ -29,7 +29,7 @@ public class WidgetsPage {
     }
 
     public void navigateToSelectMenu() {
-        webElementMethods.clickOn(selectMenu_WebElement);
+        webElementMethods.clickOnJavaScriptExecutor(selectMenu_WebElement);
     }
 
 

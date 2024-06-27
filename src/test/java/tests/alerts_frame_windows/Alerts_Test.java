@@ -18,8 +18,6 @@ public class Alerts_Test {
     private AlertsPage alertsPage;
 
 
-    ///     Data        ///
-
     private String acceptedAlertMessage = "You selected Ok";
     private String declinedAlertMessage = "You selected Cancel";
     private String name = "Popescu";

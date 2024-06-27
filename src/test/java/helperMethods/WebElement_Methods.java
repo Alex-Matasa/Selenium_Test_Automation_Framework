@@ -101,7 +101,18 @@ public class WebElement_Methods {
         select.selectByVisibleText(value);
     }
 
-    public String getFirstSelectedOption(WebElement element) {
+    public void selectByValue(WebElement element, ArrayList<String> list) {
+        waitToBeVisible(element);
+        Select select = new Select(element);
+
+        for (String item : list) {
+            select.selectByVisibleText(item);
+        }
+    }
+
+
+
+        public String getFirstSelectedOption(WebElement element) {
         waitToBeVisible(element);
         Select select = new Select(element);
 

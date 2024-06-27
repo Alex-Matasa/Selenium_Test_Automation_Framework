@@ -32,7 +32,7 @@ public class Base_PO {
     public static void cleanUpDriver() {
 
         if(driver!= null) {
-//            driver.quit();
+            driver.quit();
             driver = null;
         }
 
