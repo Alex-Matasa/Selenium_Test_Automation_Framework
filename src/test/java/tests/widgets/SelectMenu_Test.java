@@ -5,8 +5,8 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pageObjects.Base_PO;
-import pageObjects.widgets.SelectMenu_PO;
+import base_test.Base_PO;
+import pages.widgets.SelectMenu_PO;
 
 
 public class SelectMenu_Test {
@@ -27,7 +27,7 @@ public class SelectMenu_Test {
 
     @Test
     public void validScenario() {
-        selectMenuPo.accessSelectMenu();
+//        selectMenuPo.accessSelectMenu();
 
         selectMenuPo.selectValue();
         Assert.assertTrue(selectMenuPo.validateSelectValue());

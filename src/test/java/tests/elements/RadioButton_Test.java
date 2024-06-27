@@ -5,19 +5,33 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pageObjects.Base_PO;
-import pageObjects.elements.RadioButton_PO;
+import base_test.Base_PO;
+import pages.ElementsPage;
+import pages.HomePage;
+import pages.elements.RadioButtonPage;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class RadioButton_Test {
 
     private WebDriver driver;
-    private RadioButton_PO radioButtonPo;
+    private HomePage homePage;
+    private ElementsPage elementsPage;
+    private RadioButtonPage radioButtonPage;
+
+    ///      Data      ////
+
+    private ArrayList<String> radioButtonsIdValueList = new ArrayList<>(Arrays.asList("Impressive", "Yes", "No"));
+
 
     @BeforeTest
     public void setUp() {
         driver = Base_PO.getDriver();
-        radioButtonPo = new RadioButton_PO(driver);
+        homePage = new HomePage(driver);
+        elementsPage = new ElementsPage(driver);
+        radioButtonPage = new RadioButtonPage(driver);
     }
 
     @AfterTest
@@ -27,9 +41,11 @@ public class RadioButton_Test {
 
     @Test
     public void validScenario() {
-        radioButtonPo.accessRadioButton();
-        radioButtonPo.clickOnRadioButtons();
-        Assert.assertTrue(radioButtonPo.validateTest());
+        driver.get("https://demoqa.com/");
+        homePage.navigateToElements();
+        elementsPage.navigateToRadioButton();
+        radioButtonPage.clickOnRadioButtons(radioButtonsIdValueList);
+        Assert.assertTrue(radioButtonPage.validateTest(radioButtonsIdValueList));
     }
 
 

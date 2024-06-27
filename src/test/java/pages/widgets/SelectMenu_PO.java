@@ -1,12 +1,13 @@
-package pageObjects.widgets;
+package pages.widgets;
 
+import helperMethods.Assertion_Methods;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import pageObjects.Base_PO;
-import pageObjects.WebElement_Methods;
+import base_test.Base_PO;
+import helperMethods.WebElement_Methods;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,19 +16,19 @@ import java.util.List;
 public class SelectMenu_PO {
 
     private WebDriver driver;
-    private WebElement_Methods webElementMethods = new WebElement_Methods(Base_PO.getDriver());
+    private WebElement_Methods webElementMethods;
+    private Assertion_Methods assertionMethods;
 
     public SelectMenu_PO(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver,this);
+        webElementMethods = new WebElement_Methods(driver);
+        assertionMethods = new Assertion_Methods(driver);
     }
 
 
     ///     Web Elements       ///
 
-    @FindBy(xpath = "//*[text()='Widgets']/ancestor::div[contains(@class,'top-card')]") private WebElement widgetsHomePage_WebElement;
-    @FindBy(xpath = "//div[text()='Widgets']/parent::div") private WebElement widgetsMenuList_WebElement;
-    @FindBy(xpath = "//*[text()='Select Menu']/parent::li") private WebElement selectMenuMenu_WebElement;
     @FindBy(xpath = "//div[@id='withOptGroup']/descendant::input") private WebElement selectOption_WebElement;
     @FindBy(xpath = "//div[@id='withOptGroup']/descendant::div[@class=' css-1uccc91-singleValue']") private WebElement selectOptionGetText_WebElement;
     @FindBy(xpath = "//div[@id='selectOne']/descendant::input") private WebElement selectTitle_WebElement;
@@ -51,13 +52,13 @@ public class SelectMenu_PO {
 
     ///     steps       ///
 
-    public void accessSelectMenu() {
-        driver.get("https://demoqa.com/");
-        webElementMethods.clickOn(widgetsHomePage_WebElement);
-        webElementMethods.clickOn(widgetsMenuList_WebElement);
-        webElementMethods.clickOn(widgetsMenuList_WebElement);
-        webElementMethods.clickOnJavaScriptExecutor(selectMenuMenu_WebElement);
-    }
+//    public void accessSelectMenu() {
+//        driver.get("https://demoqa.com/");
+//        webElementMethods.clickOn(widgetsHomePage_WebElement);
+//        webElementMethods.clickOn(widgetsMenuList_WebElement);
+//        webElementMethods.clickOn(widgetsMenuList_WebElement);
+//        webElementMethods.clickOnJavaScriptExecutor(selectMenu_WebElement);
+//    }
 
     public void selectValue() {
         webElementMethods.clickOnJavaScriptExecutor(selectOption_WebElement);
@@ -66,7 +67,7 @@ public class SelectMenu_PO {
     }
 
     public Boolean validateSelectValue() {
-        return webElementMethods.validateText(selectOption_WebElement,selectOptionValue.get(1));
+        return assertionMethods.validateText(selectOption_WebElement,selectOptionValue.get(1));
     }
 
     public void selectTitle() {
@@ -76,7 +77,7 @@ public class SelectMenu_PO {
 
     public Boolean validateSelectTitle() {
 
-        return webElementMethods.validateText(selectTitleGetText_WebElement, selectTitleValue.get(1));
+        return assertionMethods.validateText(selectTitleGetText_WebElement, selectTitleValue.get(1));
     }
 
     public void selectColor() {
@@ -99,7 +100,7 @@ public class SelectMenu_PO {
 
     public Boolean validateMultiSelect() {
 
-        return  webElementMethods.validateText(multiSelectOutput_WebElement,multiSelectValues);
+        return  assertionMethods.validateText(multiSelectOutput_WebElement,multiSelectValues);
     }
 
     public void standardMultiSelect() {

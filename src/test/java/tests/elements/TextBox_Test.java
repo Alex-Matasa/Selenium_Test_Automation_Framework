@@ -5,18 +5,40 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pageObjects.Base_PO;
-import pageObjects.elements.TextBox_PO;
+import base_test.Base_PO;
+import pages.ElementsPage;
+import pages.HomePage;
+import pages.elements.TextBoxPage;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class TextBox_Test  {
 
     private WebDriver driver;
-    private TextBox_PO textBoxPo;
+    private HomePage homePage;
+    private ElementsPage elementsPage;
+    private TextBoxPage textBoxPage;
+
+
+    private String fullNameValue = "Popescu Ion";
+    private String emailValue = "popescu.ion@email.com";
+    private String currentAddressValue = "str. OriceStrada, nr. 5, județ OriceJudeț";
+    private String permanentAddressValue = "str. OriceStrada, nr. 5, județ OriceJudeț";
+
+    public ArrayList<String> dataInput = new ArrayList<>(Arrays.asList(
+            "Name:" + fullNameValue,
+            "Email:" + emailValue,
+            "Current Address :" + currentAddressValue,
+            "Permananet Address :" + permanentAddressValue)
+    );
 
     @BeforeTest
     public void setUp() {
         driver = Base_PO.getDriver();
-        textBoxPo = new TextBox_PO(driver);
+        homePage = new HomePage(driver);
+        elementsPage = new ElementsPage(driver);
+        textBoxPage = new TextBoxPage(driver);
     }
 
     @AfterTest
@@ -26,13 +48,16 @@ public class TextBox_Test  {
 
     @Test
     public void validScenario() {
-        textBoxPo.accessTextBox();
-        textBoxPo.enterFullName();
-        textBoxPo.enterEmail();
-        textBoxPo.enterCurrentAddress();
-        textBoxPo.enterPermanentAddress();
-        textBoxPo.clickOnSubmitButton();
-        Assert.assertTrue(textBoxPo.validateTest());
+        driver.get("https://demoqa.com/");
+        homePage.navigateToElements();
+        elementsPage.navigateToTextBox();
+
+        textBoxPage.enterFullName(fullNameValue);
+        textBoxPage.enterEmail(emailValue);
+        textBoxPage.enterCurrentAddress(currentAddressValue);
+        textBoxPage.enterPermanentAddress(permanentAddressValue);
+        textBoxPage.clickOnSubmitButton();
+        Assert.assertTrue(textBoxPage.validateTest(dataInput));
     }
 
 

@@ -1,4 +1,4 @@
-package pageObjects;
+package helperMethods;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -32,7 +32,7 @@ public class WebElement_Methods {
         element.click();
     }
 
-    public void clickOnWhenMatched(List<WebElement> webElementList, String targetValue) {
+    public void clickOnWhenMatchedByText(List<WebElement> webElementList, String targetValue) {
         for (Integer index = 0; index < webElementList.size(); index++) {
 
             if (webElementList.get(index).getText().equals(targetValue)) {
@@ -41,6 +41,26 @@ public class WebElement_Methods {
             }
         }
     }
+
+    public void clickOnWhenMatchedByAttribute(List<WebElement> webElementList, String targetValue, String attribute) {
+        for (Integer index = 0; index < webElementList.size(); index++) {
+
+            if (webElementList.get(index).getAttribute(attribute).equals(targetValue)) {
+                clickOn(webElementList.get(index));
+                break;
+            }
+        }
+    }    public void clickOnWhenMatchedByAttributeJavaScript(List<WebElement> webElementList, String targetValue, String attribute) {
+        for (Integer index = 0; index < webElementList.size(); index++) {
+
+            if (webElementList.get(index).getAttribute(attribute).equals(targetValue)) {
+                clickOnJavaScriptExecutor(webElementList.get(index));
+                break;
+            }
+        }
+    }
+
+
 
     public void clickOnMultiple(List<WebElement> webElementList, ArrayList<String> stringArrayList) {
         for (WebElement webElement : webElementList) {
@@ -108,20 +128,6 @@ public class WebElement_Methods {
 
     ///     assertions      ///
 
-    public Boolean validateText(WebElement element, String expected) {
-        return element.getText().equals(expected);
-    }
-
-    public Boolean validateText(List<WebElement> webElementList, ArrayList<String> valuesArrayList) {
-        Boolean isValid = true;
-
-        for (Integer index = 0; index < webElementList.size(); index ++) {
-            if (!webElementList.get(index).getText().equals(valuesArrayList.get(index))) {
-                isValid = false;
-            }
-        }
-        return isValid;
-    }
 
     public Boolean elementIsDisplayed(WebElement element) {
         waitToBeVisible(element);

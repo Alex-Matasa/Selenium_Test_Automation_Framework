@@ -1,4 +1,4 @@
-package pageObjects;
+package helperMethods;
 
 import org.openqa.selenium.WebDriver;
 
@@ -29,6 +29,10 @@ public class MultipleWindows_Methods {
         String parentWindow = iterator.next();
 
         driver.switchTo().window(parentWindow);
+    }
+
+    public void switchToMain() {
+        switchToMain();
     }
 
 

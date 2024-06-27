@@ -5,18 +5,34 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pageObjects.Base_PO;
-import pageObjects.alerts_frame_windows.Alerts_PO;
+import base_test.Base_PO;
+import pages.AlertsWindowsPage;
+import pages.HomePage;
+import pages.alerts_frame_windows.AlertsPage;
 
 public class Alerts_Test {
 
     private WebDriver driver;
-    private Alerts_PO alertsPo;
+    private HomePage homePage;
+    private AlertsWindowsPage alertsWindowsPage;
+    private AlertsPage alertsPage;
+
+
+    ///     Data        ///
+
+    private String acceptedAlertMessage = "You selected Ok";
+    private String declinedAlertMessage = "You selected Cancel";
+    private String name = "Popescu";
+    private String promptBoxAlertValidationMesageValue = "You entered " + name;
+
+
 
     @BeforeTest
     public void setUp() {
         driver = Base_PO.getDriver();
-        alertsPo = new Alerts_PO(driver);
+        homePage = new HomePage(driver);
+        alertsWindowsPage = new AlertsWindowsPage(driver);
+        alertsPage = new AlertsPage(driver);
     }
 
     @AfterTest
@@ -26,38 +42,34 @@ public class Alerts_Test {
 
     @Test
     public void validScenario() {
-        alertsPo.accessAlerts();
 
-        alertsPo.clickOnStandardAlertButton();
-        Assert.assertTrue(alertsPo.verifyStandardAlertIsDisplayed());
-        alertsPo.closeAlert();
-        Assert.assertTrue(alertsPo.confirmStandardAlertIsClosed());
+        driver.get("https://demoqa.com");
 
-        alertsPo.clickOnFiveSecondAlertButton();
-        Assert.assertTrue(alertsPo.verifyFiveSecondsAlertIsDisplayed());
-        alertsPo.closeAlert();
-        Assert.assertTrue(alertsPo.confirmFiveSecondsAlertIsClosed());
+        homePage.navigateToAlertsFrameWindows();
+        alertsWindowsPage.navigateToAlerts();
 
-        alertsPo.clickOnConfirmBoxAlertButton();
-        Assert.assertTrue(alertsPo.verifyConfirmBoxAlertIsDisplayed());
-        alertsPo.confirmAction();
-        Assert.assertTrue(alertsPo.verifyConfirmBoxAlertIsConfirmed());
+        alertsPage.clickOnStandardAlertButton();
+        alertsPage.acceptAlert();
 
-        alertsPo.clickOnConfirmBoxAlertButton();
-        Assert.assertTrue(alertsPo.verifyConfirmBoxAlertIsDisplayed());
-        alertsPo.cancelAction();
-        Assert.assertTrue(alertsPo.verifyConfirmBoxAlertIsCanceled());
+        alertsPage.clickOnFiveSecondAlertButton();
+        alertsPage.acceptAlert();
 
-        alertsPo.clickOnPromptBoxAlertButton();
-        Assert.assertTrue(alertsPo.verifyPromptBoxAlertIsDisplayed());
-        alertsPo.cancelAction();
-        Assert.assertTrue(alertsPo.confirmPromptBoxAlertIsClosed());
+        alertsPage.clickOnConfirmBoxAlertButton();
+        alertsPage.confirmAction();
+        Assert.assertTrue(alertsPage.verifyConfirmBoxAlertIsConfirmed(acceptedAlertMessage));
 
-        alertsPo.clickOnPromptBoxAlertButton();
-        Assert.assertTrue(alertsPo.verifyPromptBoxAlertIsDisplayed());
-        alertsPo.enterName();
-        alertsPo.confirmAction();
-        Assert.assertTrue(alertsPo.verifyEnteredDataInPromptBoxAlert());
+        alertsPage.clickOnConfirmBoxAlertButton();
+        alertsPage.cancelAction();
+        Assert.assertTrue(alertsPage.verifyConfirmBoxAlertIsCanceled(declinedAlertMessage));
 
+        alertsPage.clickOnPromptBoxAlertButton();
+        alertsPage.cancelAction();
+
+        alertsPage.clickOnPromptBoxAlertButton();
+        alertsPage.enterName(name);
+        alertsPage.confirmAction();
+        Assert.assertTrue(alertsPage.verifyEnteredDataInPromptBoxAlert(promptBoxAlertValidationMesageValue));
     }
+
+
 }

@@ -5,18 +5,37 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pageObjects.Base_PO;
-import pageObjects.elements.WebTable_PO;
+import base_test.Base_PO;
+import pages.ElementsPage;
+import pages.HomePage;
+import pages.elements.WebTablePage;
 
-public class WebTableTest extends Base_PO {
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class WebTableTest {
 
     private WebDriver driver;
-    private WebTable_PO webTable_po;
+    private HomePage homePage;
+    private ElementsPage elementsPage;
+    private WebTablePage webTablePage;
+
+
+    private String firstNameValue = "Ion";
+    private String lastNameValue = "Popescu";
+    private String emailValue = "popescu.ion@email.com";
+    private String ageValue = "30";
+    private String salaryValue = "5000";
+    private String departmentValue = "IT";
+    private ArrayList<String> inputDataList = new ArrayList<>(Arrays.asList(firstNameValue, lastNameValue, ageValue, emailValue, salaryValue, departmentValue));
+
 
     @BeforeTest
     public void setUp() {
         driver = Base_PO.getDriver();
-        webTable_po = new WebTable_PO(driver);
+        homePage = new HomePage(driver);
+        elementsPage = new ElementsPage(driver);
+        webTablePage = new WebTablePage(driver);
     }
 
     @AfterTest
@@ -27,16 +46,19 @@ public class WebTableTest extends Base_PO {
     @Test
     public void addEntryValidScenario() {
 
-        webTable_po.accessWebTable();
-        webTable_po.clickOnAddButton();
-        webTable_po.enterFirstName();
-        webTable_po.enterLastName();
-        webTable_po.enterEmail();
-        webTable_po.enterAge();
-        webTable_po.enterSalary();
-        webTable_po.enterDepartment();
-        webTable_po.clickOnSubmit();
-        Assert.assertTrue(webTable_po.validateTest());
+        driver.get("https://demoqa.com/");
+        homePage.navigateToElements();
+        elementsPage.navigateToWebTables();
+
+        webTablePage.clickOnAddButton();
+        webTablePage.enterFirstName(firstNameValue);
+        webTablePage.enterLastName(lastNameValue);
+        webTablePage.enterEmail(emailValue);
+        webTablePage.enterAge(ageValue);
+        webTablePage.enterSalary(salaryValue);
+        webTablePage.enterDepartment(departmentValue);
+        webTablePage.clickOnSubmit();
+        Assert.assertTrue(webTablePage.validateTest(inputDataList));
 
     }
 

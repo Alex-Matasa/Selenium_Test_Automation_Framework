@@ -5,19 +5,31 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pageObjects.Base_PO;
-import pageObjects.alerts_frame_windows.Frames_PO;
-import pageObjects.alerts_frame_windows.NestedFrames_PO;
+import base_test.Base_PO;
+import pages.AlertsWindowsPage;
+import pages.HomePage;
+import pages.alerts_frame_windows.NestedFramesPage;
 
 public class NestedFrames_Test {
 
     private WebDriver driver;
-    private NestedFrames_PO nestedFramesPo;
+    private HomePage homePage;
+    private AlertsWindowsPage alertsWindowsPage;
+    private NestedFramesPage nestedFramesPo;
+
+
+    ///     Data        ///
+
+    private String childFrameTextValue = "Child Iframe";
+    private String parentFrameTextValue = "Parent frame";
+
 
     @BeforeTest
     public void setUp() {
         driver = Base_PO.getDriver();
-        nestedFramesPo = new NestedFrames_PO(driver);
+        homePage = new HomePage(driver);
+        alertsWindowsPage = new AlertsWindowsPage(driver);
+        nestedFramesPo = new NestedFramesPage(driver);
     }
 
     @AfterTest
@@ -28,23 +40,19 @@ public class NestedFrames_Test {
     @Test
     public void validScenario() {
 
-        nestedFramesPo.accessNestedFrames();
+        driver.get("https://demoqa.com");
+        homePage.navigateToAlertsFrameWindows();
+        alertsWindowsPage.navigateToNestedFrames();
+
         nestedFramesPo.switchToParentFrame();
-        Assert.assertTrue(nestedFramesPo.validateParentFrame());
-        nestedFramesPo.switchToMainPage();
-        Assert.assertTrue(nestedFramesPo.validateSwitchToMain());
+        Assert.assertTrue(nestedFramesPo.validateParentFrame(parentFrameTextValue));
 
         nestedFramesPo.switchToChildFrame();
-        Assert.assertTrue(nestedFramesPo.validateChildFrame());
-        nestedFramesPo.switchToMainPage();
-        Assert.assertTrue(nestedFramesPo.validateSwitchToMain());
+        Assert.assertTrue(nestedFramesPo.validateChildFrame(childFrameTextValue));
 
-        nestedFramesPo.switchToChildFrame();
-        Assert.assertTrue(nestedFramesPo.validateChildFrame());
-        nestedFramesPo.switchToParentFrame();
-        Assert.assertTrue(nestedFramesPo.validateParentFrame());
+
         nestedFramesPo.switchToMainPage();
-        nestedFramesPo.validateSwitchToMain();
+
 
 
     }

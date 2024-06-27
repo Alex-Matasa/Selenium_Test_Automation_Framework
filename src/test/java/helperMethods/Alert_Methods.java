@@ -1,18 +1,17 @@
-package pageObjects;
+package helperMethods;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class AlertMethods_Methods {
+public class Alert_Methods {
 
     private WebDriver driver;
 
-    public AlertMethods_Methods(WebDriver driver) {
+    public Alert_Methods(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -46,19 +45,4 @@ public class AlertMethods_Methods {
         return  alert.getText();
     }
 
-
-
-
-
-    ///     assertions      ///
-
-    public Boolean alertIsDisplayed(String expectedText) {
-
-        return getTextAlert().equals(expectedText);
-
-    }
-
-    public Boolean alertIsClosed(WebElement element) {
-        return element.isDisplayed();
-    }
 }

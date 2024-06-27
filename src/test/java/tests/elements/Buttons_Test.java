@@ -5,18 +5,29 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pageObjects.Base_PO;
-import pageObjects.elements.Buttons_PO;
+import base_test.Base_PO;
+import pages.ElementsPage;
+import pages.HomePage;
+import pages.elements.ButtonsPage;
 
 
 public class Buttons_Test {
     private WebDriver driver;
-    private Buttons_PO buttonsPo;
+    private HomePage homePage;
+    private ElementsPage elementsPage;
+    private ButtonsPage buttonsPage;
+
+
+    private String doubleClickMeMessageConfirmationValue = "You have done a double click";
+    private String rightClickMeMessageConfirmationValue = "You have done a right click";
+    private String clickMeMessageConfirmationValue = "You have done a dynamic click";
 
     @BeforeTest
     public void setUp() {
         driver = Base_PO.getDriver();
-        buttonsPo = new Buttons_PO(driver);
+        homePage = new HomePage(driver);
+        elementsPage = new ElementsPage(driver);
+        buttonsPage = new ButtonsPage(driver);
     }
 
     @AfterTest
@@ -26,15 +37,18 @@ public class Buttons_Test {
 
     @Test
     public void validScenario() {
-        buttonsPo.accessButtons();
 
-        buttonsPo.doubleClickOnDoubleClickButton();
-        Assert.assertTrue(buttonsPo.validateDoubleClickButton());
+        driver.get("https://demoqa.com/");
+        homePage.navigateToElements();
+        elementsPage.navigateToButtons();
 
-        buttonsPo.rightClickOnRightClickButton();
-        Assert.assertTrue(buttonsPo.validateRightClickButton());
+        buttonsPage.doubleClickOnDoubleClickButton();
+        Assert.assertTrue(buttonsPage.validateDoubleClickButton(doubleClickMeMessageConfirmationValue));
 
-        buttonsPo.clickOnClickMeButton();
-        Assert.assertTrue(buttonsPo.validateClickMeButton());
+        buttonsPage.rightClickOnRightClickButton();
+        Assert.assertTrue(buttonsPage.validateRightClickButton(rightClickMeMessageConfirmationValue));
+
+        buttonsPage.clickOnClickMeButton();
+        Assert.assertTrue(buttonsPage.validateClickMeButton(clickMeMessageConfirmationValue));
     }
 }
