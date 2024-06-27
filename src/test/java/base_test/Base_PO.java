@@ -14,7 +14,6 @@ public class Base_PO {
     }
 
     private static WebDriver createDriver() {
-        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/java/drivers/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
