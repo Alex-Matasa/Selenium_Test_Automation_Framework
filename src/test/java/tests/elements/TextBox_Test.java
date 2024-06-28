@@ -39,11 +39,13 @@ public class TextBox_Test  {
         homePage = new HomePage(driver);
         elementsPage = new ElementsPage(driver);
         textBoxPage = new TextBoxPage(driver);
+        System.out.println("Before Test");
     }
 
     @AfterTest
     public void tearDown() {
         Base_PO.cleanUpDriver();
+        System.out.println("After test");
     }
 
     @Test

@@ -43,7 +43,7 @@
 <!--                <version>3.0.0</version>-->
 <!--                <configuration>-->
 <!--                    <suiteXmlFiles>-->
-<!--                        <xmlFile>testng.xml</xmlFile>-->
+<!--                        <xmlFile>allTests.xml</xmlFile>-->
 <!--                    </suiteXmlFiles>-->
 <!--                </configuration>-->
 <!--            </plugin>-->
