@@ -1,10 +1,12 @@
 package tests.forms;
 
+import helperMethods.Assertion_Methods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.json.JsonOutput;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import base_test.Base_PO;
 import pages.FormsPage;
@@ -21,6 +23,7 @@ public class PracticeForm_Test {
     private HomePage homePage;
     private FormsPage formsPage;
     private PracticeFormPage practiceFormPage;
+    private Assertion_Methods assertionMethods;
 
 
     private String firstNameValue = "Ion";
@@ -58,6 +61,7 @@ public class PracticeForm_Test {
         homePage = new HomePage(driver);
         formsPage = new FormsPage(driver);
         practiceFormPage = new PracticeFormPage(driver);
+        assertionMethods = new Assertion_Methods(driver);
     }
 
     @AfterTest
@@ -89,7 +93,6 @@ public class PracticeForm_Test {
         Assert.assertTrue(practiceFormPage.correctDataAreSubmitted(dataInput));
     }
 
-
     private  String getHobbiesFormat() {
         String hobbies ="";
 
@@ -100,7 +103,6 @@ public class PracticeForm_Test {
             }
             else hobbies += hobbiesListValue.get(index) + ", ";
         }
-
 
         return hobbies;
 

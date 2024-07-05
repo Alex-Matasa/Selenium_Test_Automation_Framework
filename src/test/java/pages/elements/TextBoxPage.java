@@ -57,7 +57,7 @@ public class TextBoxPage {
     }
 
     public Boolean validateEmailErrorField() {
-        return webElementMethods.elementIsDisplayed(emailError_WebElement);
+        return assertionMethods.elementIsDisplayed(emailError_WebElement);
     }
 
 

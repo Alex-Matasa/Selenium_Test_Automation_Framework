@@ -59,7 +59,6 @@ public class WebTableTest {
         webTablePage.enterDepartment(departmentValue);
         webTablePage.clickOnSubmit();
         Assert.assertTrue(webTablePage.validateTest(inputDataList));
-
     }
 
 

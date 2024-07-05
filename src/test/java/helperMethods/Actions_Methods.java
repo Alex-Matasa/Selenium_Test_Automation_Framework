@@ -1,5 +1,6 @@
 package helperMethods;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -14,13 +15,16 @@ public class Actions_Methods {
         actions = new Actions(driver);
     }
 
-
     public void doubleClick(WebElement element) {
         actions.doubleClick(element).perform();
     }
 
     public void rightClick(WebElement element) {
         actions.contextClick(element).perform();
+    }
+
+    public void hover(WebElement element) {
+        actions.moveToElement(element).build().perform();
     }
 
 

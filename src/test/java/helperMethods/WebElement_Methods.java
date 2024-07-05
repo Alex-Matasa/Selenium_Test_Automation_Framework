@@ -22,13 +22,13 @@ public class WebElement_Methods {
     }
 
 
-    public void waitToBeVisible(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOf(element));
-    }
+//    public void waitToBeVisible(WebElement element) {
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+//        wait.until(ExpectedConditions.visibilityOf(element));
+//    }
 
     public void clickOn(WebElement element) {
-        waitToBeVisible(element);
+//        waitToBeVisible(element);
         element.click();
     }
 
@@ -76,7 +76,7 @@ public class WebElement_Methods {
     }
 
     public void sendKeys(WebElement element, String value) {
-        waitToBeVisible(element);
+//        waitToBeVisible(element);
         element.sendKeys(value);
     }
 
@@ -90,19 +90,19 @@ public class WebElement_Methods {
     }
 
     public void selectByText(WebElement element, String text) {
-        waitToBeVisible(element);
+//        waitToBeVisible(element);
         Select select = new Select(element);
         select.selectByVisibleText(text);
     }
 
     public void selectByValue(WebElement element, String value) {
-        waitToBeVisible(element);
+//        waitToBeVisible(element);
         Select select = new Select(element);
         select.selectByVisibleText(value);
     }
 
     public void selectByValue(WebElement element, ArrayList<String> list) {
-        waitToBeVisible(element);
+//        waitToBeVisible(element);
         Select select = new Select(element);
 
         for (String item : list) {
@@ -113,14 +113,14 @@ public class WebElement_Methods {
 
 
         public String getFirstSelectedOption(WebElement element) {
-        waitToBeVisible(element);
+//        waitToBeVisible(element);
         Select select = new Select(element);
 
         return select.getFirstSelectedOption().getText();
     }
 
     public ArrayList<String> getAllSelectedOptions(WebElement element) {
-        waitToBeVisible(element);
+//        waitToBeVisible(element);
         Select select = new Select(element);
 
         List<WebElement> webElementList = select.getAllSelectedOptions();
@@ -135,16 +135,6 @@ public class WebElement_Methods {
 
         return arrayList;
     }
-
-
-    ///     assertions      ///
-
-
-    public Boolean elementIsDisplayed(WebElement element) {
-        waitToBeVisible(element);
-        return element.isDisplayed();
-    }
-
 
 
 }

@@ -19,9 +19,10 @@ public class WidgetsPage {
     }
 
 
-    @FindBy(xpath = "//div[text()='Widgets']/parent::div") private WebElement widgetsMenuList_WebElement;
+    @FindBy(xpath = "//div[text()='Widgets']/parent::div") private WebElement widgets_WebElement;
     @FindBy(xpath = "//*[text()='Date Picker']/parent::li") private WebElement datePicker_WebElement;
     @FindBy(xpath = "//*[text()='Select Menu']/parent::li") private WebElement selectMenu_WebElement;
+    @FindBy(xpath = "//*[text()='Tool Tips']/parent::li") private WebElement toolTips_WebElement;
 
 
     public void navigateToDatePicker() {
@@ -30,6 +31,10 @@ public class WidgetsPage {
 
     public void navigateToSelectMenu() {
         webElementMethods.clickOnJavaScriptExecutor(selectMenu_WebElement);
+    }
+
+    public void navigateToToolTips() {
+        webElementMethods.clickOnJavaScriptExecutor(toolTips_WebElement);
     }
 
 

@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import base_test.Base_PO;
 import pages.ElementsPage;
@@ -28,12 +29,15 @@ public class Buttons_Test {
         homePage = new HomePage(driver);
         elementsPage = new ElementsPage(driver);
         buttonsPage = new ButtonsPage(driver);
+
+
     }
 
     @AfterTest
     public void tearDown() {
         Base_PO.cleanUpDriver();
     }
+
 
     @Test
     public void validScenario() {
@@ -51,4 +55,8 @@ public class Buttons_Test {
         buttonsPage.clickOnClickMeButton();
         Assert.assertTrue(buttonsPage.validateClickMeButton(clickMeMessageConfirmationValue));
     }
+
+
+
+
 }

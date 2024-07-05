@@ -124,6 +124,14 @@ public class PracticeFormPage {
         return assertionMethods.validateText(outputDataList_WebElement, dataInput);
     }
 
+    public Boolean unsuccessfulSubmission() {
+        return assertionMethods.elementIsDisplayed(thanksForSubmitting_WebElement);
+    }
+
+
+
+
+
 
 
 
