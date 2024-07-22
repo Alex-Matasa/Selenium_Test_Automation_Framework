@@ -42,6 +42,7 @@ public class Alerts_Test {
     public void validScenario() {
 
         driver.get("https://demoqa.com");
+        System.out.println("bla");
 
         homePage.navigateToAlertsFrameWindows();
         alertsWindowsPage.navigateToAlerts();
