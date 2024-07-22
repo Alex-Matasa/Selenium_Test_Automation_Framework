@@ -1,30 +1,28 @@
 package pages;
 
-import helperMethods.Page_Methods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import helperMethods.WebElement_Methods;
-import org.openqa.selenium.support.PageFactory;
 
-public class ElementsPage {
+public class ElementsPage extends BasePage {
 
-    private WebDriver driver;
-    private WebElement_Methods webElementMethods;
 
     public ElementsPage (WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-        webElementMethods = new WebElement_Methods(driver);
+        super(driver);
     }
 
-
-    @FindBy(xpath = "//div[text()='Elements']/parent::div") private WebElement elementsMenuList_WebElement;
-    @FindBy(xpath = "//*[text()='Text Box']/parent::li") private WebElement textBox_WebElement;
-    @FindBy(xpath = "//*[text()='Radio Button']/parent::li") private WebElement radioButton_WebElement;
-    @FindBy(xpath = "//*[text()='Web Tables']/parent::li") private WebElement webTables_WebElement;
-    @FindBy(xpath = "//*[text()='Buttons']/parent::li") private WebElement buttons_WebElement;
-    @FindBy(xpath = "//span[text()='Buttons']") private WebElement buttons_WebElement_v2;
+    @FindBy(xpath = "//div[text()='Elements']/parent::div")
+    private WebElement elementsMenuList_WebElement;
+    @FindBy(xpath = "//*[text()='Text Box']/parent::li")
+    private WebElement textBox_WebElement;
+    @FindBy(xpath = "//*[text()='Radio Button']/parent::li")
+    private WebElement radioButton_WebElement;
+    @FindBy(xpath = "//*[text()='Web Tables']/parent::li")
+    private WebElement webTables_WebElement;
+    @FindBy(xpath = "//*[text()='Buttons']/parent::li")
+    private WebElement buttons_WebElement;
+    @FindBy(xpath = "//span[text()='Buttons']")
+    private WebElement buttons_WebElement_v2;
 
 
     public void navigateToTextBox () {

@@ -7,28 +7,33 @@ import org.openqa.selenium.support.PageFactory;
 
 import base_test.Base_PO;
 import helperMethods.WebElement_Methods;
+import pages.BasePage;
 
 import java.util.List;
 
-public class DatePickerPage {
-
-    private WebDriver driver;
-    private WebElement_Methods webElementMethods = new WebElement_Methods(Base_PO.getDriver());
+public class DatePickerPage extends BasePage {
 
     public DatePickerPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
 
-    @FindBy(xpath = "//input[@id='datePickerMonthYearInput']") private WebElement selectDate_WebElement;
-    @FindBy(xpath = "//select[@class='react-datepicker__month-select']") private WebElement selectMonth_WebElement;
-    @FindBy(xpath = "//select[@class='react-datepicker__year-select']") private WebElement selectYear_WebElement;
-    @FindBy(xpath = "//div[@role='option'] [not(contains(@class, 'day--outside-month'))]") private List<WebElement> selectDay_WebElement;
-    @FindBy(xpath = "//button[text()='Previous Month']") private WebElement selectPreviousMonth_WebElement;
-    @FindBy(xpath = "//button[text()='Next Month']") private WebElement selectNextMonth_WebElement;
-    @FindBy(xpath = "//input[@id='dateAndTimePickerInput']") private WebElement selectDateAndTime_WebElement;
-    @FindBy(xpath = "//div[contains(@class, 'hasMonthDropdown')]") private WebElement monthYearArrows_WebElement;
+    @FindBy(xpath = "//input[@id='datePickerMonthYearInput']")
+    private WebElement selectDate_WebElement;
+    @FindBy(xpath = "//select[@class='react-datepicker__month-select']")
+    private WebElement selectMonth_WebElement;
+    @FindBy(xpath = "//select[@class='react-datepicker__year-select']")
+    private WebElement selectYear_WebElement;
+    @FindBy(xpath = "//div[@role='option'] [not(contains(@class, 'day--outside-month'))]")
+    private List<WebElement> selectDay_WebElement;
+    @FindBy(xpath = "//button[text()='Previous Month']")
+    private WebElement selectPreviousMonth_WebElement;
+    @FindBy(xpath = "//button[text()='Next Month']")
+    private WebElement selectNextMonth_WebElement;
+    @FindBy(xpath = "//input[@id='dateAndTimePickerInput']")
+    private WebElement selectDateAndTime_WebElement;
+    @FindBy(xpath = "//div[contains(@class, 'hasMonthDropdown')]")
+    private WebElement monthYearArrows_WebElement;
 
 
 

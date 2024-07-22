@@ -1,26 +1,17 @@
 package pages.elements;
 
-import helperMethods.Assertion_Methods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import helperMethods.WebElement_Methods;
+import pages.BasePage;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class WebTablePage {
-
-    private WebDriver driver;
-    private WebElement_Methods webElementMethods;
-    private Assertion_Methods assertionMethods;
+public class WebTablePage extends BasePage {
 
     public WebTablePage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver,this);
-        webElementMethods = new WebElement_Methods(driver);
-        assertionMethods = new Assertion_Methods(driver);
+        super(driver);
     }
 
 

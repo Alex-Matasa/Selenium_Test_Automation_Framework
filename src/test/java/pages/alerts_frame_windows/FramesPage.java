@@ -1,28 +1,14 @@
 package pages.alerts_frame_windows;
 
-import helperMethods.Assertion_Methods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import pages.BasePage;
 
-import helperMethods.Frames_Methods;
-import helperMethods.WebElement_Methods;
-
-public class FramesPage {
-
-    private WebDriver driver;
-    private WebElement_Methods webElementMethods;
-    private Frames_Methods framesMethods;
-    private Assertion_Methods assertionMethods;
-
+public class FramesPage extends BasePage {
 
     public FramesPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-        webElementMethods = new WebElement_Methods(driver);
-        framesMethods = new Frames_Methods(driver);
-        assertionMethods = new Assertion_Methods(driver);
+        super(driver);
     }
 
 

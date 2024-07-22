@@ -1,39 +1,29 @@
 package pages.alerts_frame_windows;
 
-import helperMethods.Assertion_Methods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import helperMethods.Alert_Methods;
-import helperMethods.WebElement_Methods;
+import pages.BasePage;
 
 
-public class AlertsPage {
-
-    private WebDriver driver;
-    private WebElement_Methods webElementMethods;
-    private Alert_Methods alertMethods;
-    private Assertion_Methods assertionMethods;
-
+public class AlertsPage extends BasePage {
 
     public AlertsPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-
-        webElementMethods = new WebElement_Methods(driver);
-        alertMethods = new Alert_Methods(driver);
-        assertionMethods = new Assertion_Methods(driver);
+        super(driver);
     }
 
-
-    @FindBy(xpath = "//button[@id='alertButton']") private WebElement standardAlertButton_WebElement;
-    @FindBy(xpath = "//button[@id='timerAlertButton']") private WebElement fiveSecondsAlertButton_WebElement;
-    @FindBy(xpath = "//button[@id='confirmButton']") private WebElement confirmBoxAlertButton_WebElement;
-    @FindBy(xpath = "//span[@id='confirmResult']") private WebElement confirmBoxAlerValidationMessage_WebElement;
-    @FindBy(xpath = "//span[@id='promptResult']") private WebElement promptBoxAlertValidationMessage_WebElement;
-    @FindBy(xpath = "//button[@id='promtButton']") private WebElement promptBoxAlertButton_WebElement;
-
+    @FindBy(xpath = "//button[@id='alertButton']")
+    private WebElement standardAlertButton_WebElement;
+    @FindBy(xpath = "//button[@id='timerAlertButton']")
+    private WebElement fiveSecondsAlertButton_WebElement;
+    @FindBy(xpath = "//button[@id='confirmButton']")
+    private WebElement confirmBoxAlertButton_WebElement;
+    @FindBy(xpath = "//span[@id='confirmResult']")
+    private WebElement confirmBoxAlerValidationMessage_WebElement;
+    @FindBy(xpath = "//span[@id='promptResult']")
+    private WebElement promptBoxAlertValidationMessage_WebElement;
+    @FindBy(xpath = "//button[@id='promtButton']")
+    private WebElement promptBoxAlertButton_WebElement;
 
     public void clickOnStandardAlertButton() {
         webElementMethods.clickOn(standardAlertButton_WebElement);

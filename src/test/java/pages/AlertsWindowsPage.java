@@ -6,23 +6,23 @@ import org.openqa.selenium.support.FindBy;
 import helperMethods.WebElement_Methods;
 import org.openqa.selenium.support.PageFactory;
 
-public class AlertsWindowsPage {
-
-    private WebDriver driver;
-    private WebElement_Methods webElementMethods;
+public class AlertsWindowsPage extends BasePage{
 
     public AlertsWindowsPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-        webElementMethods = new WebElement_Methods(driver);
+        super(driver);
     }
 
 
-    @FindBy(xpath = "//div[text()='Alerts, Frame & Windows']/parent::div") private WebElement alertsFrameWindowsMenuList_WebElement;
-    @FindBy(xpath = "//*[text()='Browser Windows']/parent::li") private WebElement browserWindows_WebElement;
-    @FindBy(xpath = "//*[text()='Alerts']/parent::li") private WebElement alerts_WebElement;
-    @FindBy(xpath = "//*[text()='Frames']/parent::li") private WebElement frames_WebElement;
-    @FindBy(xpath = "//*[text()='Nested Frames']/parent::li") private WebElement nestedFrames_WebElement;
+    @FindBy(xpath = "//div[text()='Alerts, Frame & Windows']/parent::div")
+    private WebElement alertsFrameWindowsMenuList_WebElement;
+    @FindBy(xpath = "//*[text()='Browser Windows']/parent::li")
+    private WebElement browserWindows_WebElement;
+    @FindBy(xpath = "//*[text()='Alerts']/parent::li")
+    private WebElement alerts_WebElement;
+    @FindBy(xpath = "//*[text()='Frames']/parent::li")
+    private WebElement frames_WebElement;
+    @FindBy(xpath = "//*[text()='Nested Frames']/parent::li")
+    private WebElement nestedFrames_WebElement;
 
 
     public void navigateToBrowserWindows() {

@@ -6,24 +6,23 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import base_test.Base_PO;
 import helperMethods.WebElement_Methods;
+import pages.BasePage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class RadioButtonPage {
-
-    private WebDriver driver;
-    private WebElement_Methods webElementMethods = new WebElement_Methods(Base_PO.getDriver());
+public class RadioButtonPage extends BasePage {
 
     public RadioButtonPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
 
-    @FindBy(xpath = "//input[@type='radio']/following-sibling::label") private List<WebElement> radioButtonInput_WebElement;
-    @FindBy(xpath = "//*[@class='text-success']") private WebElement selectionConfirmed_WebElement;
+    @FindBy(xpath = "//input[@type='radio']/following-sibling::label")
+    private List<WebElement> radioButtonInput_WebElement;
+    @FindBy(xpath = "//*[@class='text-success']")
+    private WebElement selectionConfirmed_WebElement;
 
 
     public void clickOnRadioButtons(ArrayList expected) {
@@ -61,8 +60,6 @@ public class RadioButtonPage {
         }
         return isValid;
     }
-
-
 
 
 
