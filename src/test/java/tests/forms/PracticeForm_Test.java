@@ -2,10 +2,8 @@ package tests.forms;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import base_test.Base_PO;
+import base_test.Base_Test;
 import pages.FormsPage;
 import pages.HomePage;
 import pages.forms.PracticeFormPage;
@@ -14,12 +12,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
-public class PracticeForm_Test {
+public class PracticeForm_Test extends Base_Test {
 
-    private WebDriver driver;
-    private HomePage homePage;
-    private FormsPage formsPage;
-    private PracticeFormPage practiceFormPage;
+    private WebDriver driver = getDriver();
+
+    private HomePage homePage = new HomePage(driver);
+    private FormsPage formsPage = new FormsPage(driver);
+    private PracticeFormPage practiceFormPage = new PracticeFormPage(driver);
 
 
     private String firstNameValue = "Ion";
@@ -50,19 +49,6 @@ public class PracticeForm_Test {
             "Picture " + "linkedin_photo.png",
             "Address " + currentAddressValue,
             "State and City " + stateValue + " " + cityValue));
-
-    @BeforeTest
-    public void setUp() {
-        driver = Base_PO.getDriver();
-        homePage = new HomePage(driver);
-        formsPage = new FormsPage(driver);
-        practiceFormPage = new PracticeFormPage(driver);
-    }
-
-    @AfterTest
-    public void tearDown() {
-        Base_PO.cleanUpDriver();
-    }
 
     @Test
     public void validScenario() {

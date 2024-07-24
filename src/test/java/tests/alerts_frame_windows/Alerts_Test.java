@@ -2,20 +2,19 @@ package tests.alerts_frame_windows;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import base_test.Base_PO;
+import base_test.Base_Test;
 import pages.AlertsWindowsPage;
 import pages.HomePage;
 import pages.alerts_frame_windows.AlertsPage;
 
-public class Alerts_Test {
+public class Alerts_Test extends Base_Test {
 
-    private WebDriver driver;
-    private HomePage homePage;
-    private AlertsWindowsPage alertsWindowsPage;
-    private AlertsPage alertsPage;
+    private WebDriver driver = getDriver();
+
+    private HomePage homePage = new HomePage(driver);
+    private AlertsWindowsPage alertsWindowsPage = new AlertsWindowsPage(driver);
+    private AlertsPage alertsPage = new AlertsPage(driver);
 
 
     private String acceptedAlertMessage = "You selected Ok";
@@ -24,24 +23,8 @@ public class Alerts_Test {
     private String promptBoxAlertValidationMesageValue = "You entered " + name;
 
 
-
-    @BeforeTest
-    public void setUp() {
-        driver = Base_PO.getDriver();
-        homePage = new HomePage(driver);
-        alertsWindowsPage = new AlertsWindowsPage(driver);
-        alertsPage = new AlertsPage(driver);
-    }
-
-    @AfterTest
-    public void tearDown() {
-        Base_PO.cleanUpDriver();
-    }
-
     @Test
     public void validScenario() {
-
-        driver.get("https://demoqa.com");
 
         homePage.navigateToAlertsFrameWindows();
         alertsWindowsPage.navigateToAlerts();

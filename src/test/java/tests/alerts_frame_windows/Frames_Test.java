@@ -2,39 +2,24 @@ package tests.alerts_frame_windows;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import base_test.Base_PO;
+import base_test.Base_Test;
 import pages.AlertsWindowsPage;
 import pages.HomePage;
 import pages.alerts_frame_windows.FramesPage;
 
-public class Frames_Test {
+public class Frames_Test extends Base_Test {
 
-    private WebDriver driver;
-    private HomePage homePage;
-    private AlertsWindowsPage alertsWindowsPage;
-    private FramesPage framesPage;
+    private WebDriver driver = getDriver();
+
+    private HomePage homePage = new HomePage(driver);
+    private AlertsWindowsPage  alertsWindowsPage = new AlertsWindowsPage(driver);
+    private FramesPage framesPage = new FramesPage(driver);
 
 
     ///     Data        ///
 
     private String frameTextValue = "This is a sample page";
-
-
-    @BeforeTest
-    public void setUp() {
-        driver = Base_PO.getDriver();
-        homePage = new HomePage(driver);
-        alertsWindowsPage = new AlertsWindowsPage(driver);
-        framesPage = new FramesPage(driver);
-    }
-
-    @AfterTest
-    public void tearDown() {
-        Base_PO.cleanUpDriver();
-    }
 
     @Test
     public void validScenario() {
@@ -50,7 +35,6 @@ public class Frames_Test {
         framesPage.switchToFrame2();
         Assert.assertTrue(framesPage.validateFrame2(frameTextValue));
         framesPage.switchToMainPage();
-
     }
 
 

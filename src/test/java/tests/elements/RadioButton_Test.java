@@ -2,10 +2,8 @@ package tests.elements;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import base_test.Base_PO;
+import base_test.Base_Test;
 import pages.ElementsPage;
 import pages.HomePage;
 import pages.elements.RadioButtonPage;
@@ -14,30 +12,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
-public class RadioButton_Test {
+public class RadioButton_Test extends Base_Test {
 
-    private WebDriver driver;
-    private HomePage homePage;
-    private ElementsPage elementsPage;
-    private RadioButtonPage radioButtonPage;
+    private WebDriver driver = getDriver();
+
+    private HomePage homePage = new HomePage(driver);
+    private ElementsPage elementsPage = new ElementsPage(driver);
+    private RadioButtonPage radioButtonPage = new RadioButtonPage(driver);
+
 
     ///      Data      ////
 
     private ArrayList<String> radioButtonsIdValueList = new ArrayList<>(Arrays.asList("Impressive", "Yes", "No"));
-
-
-    @BeforeTest
-    public void setUp() {
-        driver = Base_PO.getDriver();
-        homePage = new HomePage(driver);
-        elementsPage = new ElementsPage(driver);
-        radioButtonPage = new RadioButtonPage(driver);
-    }
-
-    @AfterTest
-    public void tearDown() {
-        Base_PO.cleanUpDriver();
-    }
 
     @Test
     public void validScenario() {

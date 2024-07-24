@@ -2,40 +2,29 @@ package tests.widgets;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import base_test.Base_PO;
+import base_test.Base_Test;
 import pages.HomePage;
 import pages.WidgetsPage;
 import pages.widgets.DatePickerPage;
 
 
-public class DatePicker_Test {
+public class DatePicker_Test extends Base_Test {
 
-    private WebDriver driver;
-    private HomePage homePage;
-    private WidgetsPage widgetsPage;
-    private DatePickerPage datePickerPage;
+    private WebDriver driver = getDriver();
 
+    private HomePage homePage = new HomePage(driver);
+    private WidgetsPage widgetsPage = new WidgetsPage(driver);
+    private DatePickerPage datePickerPage = new DatePickerPage(driver);
+
+
+        ///         Data        ////
 
     private String monthValue = "May";
     private String yearValue = "2020";
     private String dayValue = "1";
 
-    @BeforeTest
-    public void setUp()  {
-        driver = Base_PO.getDriver();
-        homePage = new HomePage(driver);
-        widgetsPage = new WidgetsPage(driver);
-        datePickerPage = new DatePickerPage(driver);
-    }
-
-    @AfterTest
-    public void tearDown() {
-        Base_PO.cleanUpDriver();
-    }
 
     @Test
     public void validScenario() {

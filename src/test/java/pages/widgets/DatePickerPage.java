@@ -3,10 +3,7 @@ package pages.widgets;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-import base_test.Base_PO;
-import helperMethods.WebElement_Methods;
 import pages.BasePage;
 
 import java.util.List;

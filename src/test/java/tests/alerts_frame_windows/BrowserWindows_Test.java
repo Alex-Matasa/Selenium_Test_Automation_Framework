@@ -3,21 +3,20 @@ package tests.alerts_frame_windows;
 import helperMethods.MultipleWindows_Methods;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import base_test.Base_PO;
+import base_test.Base_Test;
 import pages.AlertsWindowsPage;
 import pages.HomePage;
 import pages.alerts_frame_windows.BrowserWindowsPage;
 
-public class BrowserWindows_Test {
+public class BrowserWindows_Test extends Base_Test {
 
-    private WebDriver driver;
-    private HomePage homePage;
-    private BrowserWindowsPage browserWindowsPage;
-    private AlertsWindowsPage alertsWindowsPage;
-    private MultipleWindows_Methods multipleWindows_methods;
+    private WebDriver driver = getDriver();
+
+    private HomePage homePage = new HomePage(driver);
+    private  AlertsWindowsPage alertsWindowsPage = new AlertsWindowsPage(driver);
+    private BrowserWindowsPage browserWindowsPage = new BrowserWindowsPage(driver);
+    private MultipleWindows_Methods multipleWindows_methods = new MultipleWindows_Methods(driver);
 
 
     ///     Data        ///
@@ -25,20 +24,6 @@ public class BrowserWindows_Test {
     String newTabConfirmationValue = "This is a sample page";
     String newWindowConfirmationValue = "This is a sample page";
 
-
-    @BeforeTest
-    public void setUp() {
-        driver = Base_PO.getDriver();
-        homePage = new HomePage(driver);
-        alertsWindowsPage = new AlertsWindowsPage(driver);
-        browserWindowsPage = new BrowserWindowsPage(driver);
-        multipleWindows_methods = new MultipleWindows_Methods(driver);
-    }
-
-    @AfterTest
-    public void tearDown() {
-        Base_PO.cleanUpDriver();
-    }
 
     @Test
     public void validScenario() {

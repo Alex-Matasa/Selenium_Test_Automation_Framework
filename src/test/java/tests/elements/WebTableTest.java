@@ -2,10 +2,8 @@ package tests.elements;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import base_test.Base_PO;
+import base_test.Base_Test;
 import pages.ElementsPage;
 import pages.HomePage;
 import pages.elements.WebTablePage;
@@ -13,13 +11,16 @@ import pages.elements.WebTablePage;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class WebTableTest {
+public class WebTableTest extends Base_Test {
 
-    private WebDriver driver;
-    private HomePage homePage;
-    private ElementsPage elementsPage;
-    private WebTablePage webTablePage;
+    private WebDriver driver = getDriver();
 
+    private HomePage homePage = new HomePage(driver);
+    private ElementsPage elementsPage = new ElementsPage(driver);
+    private WebTablePage webTablePage = new WebTablePage(driver);
+
+
+            ///     Data        ///
 
     private String firstNameValue = "Ion";
     private String lastNameValue = "Popescu";
@@ -29,19 +30,6 @@ public class WebTableTest {
     private String departmentValue = "IT";
     private ArrayList<String> inputDataList = new ArrayList<>(Arrays.asList(firstNameValue, lastNameValue, ageValue, emailValue, salaryValue, departmentValue));
 
-
-    @BeforeTest
-    public void setUp() {
-        driver = Base_PO.getDriver();
-        homePage = new HomePage(driver);
-        elementsPage = new ElementsPage(driver);
-        webTablePage = new WebTablePage(driver);
-    }
-
-    @AfterTest
-    public void tearDown() {
-        Base_PO.cleanUpDriver();
-    }
 
     @Test
     public void addEntryValidScenario() {

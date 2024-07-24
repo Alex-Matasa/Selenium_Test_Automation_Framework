@@ -2,21 +2,31 @@ package base_test;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 import java.util.concurrent.TimeUnit;
 
-public class Base_PO {
+public class Base_Test {
 
     private static WebDriver driver;
 
-    public Base_PO() {
+    @BeforeTest
+    public void setUp() {
 
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        driver.get("https://demoqa.com");
+    }
+
+    @AfterTest
+    public void tearDown() {
+        cleanUpDriver();
     }
 
     private static WebDriver createDriver() {
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+
         return driver;
     }
 

@@ -28,7 +28,7 @@ public class HomePage extends BasePage{
     }
 
     public void navigateToAlertsFrameWindows() {
-        webElementMethods.clickOn(alertsFrameWindowsHomePage_WebElement);
+        webElementMethods.clickOnJavaScriptExecutor(alertsFrameWindowsHomePage_WebElement);
     }
 
     public void navigateToForms() {
